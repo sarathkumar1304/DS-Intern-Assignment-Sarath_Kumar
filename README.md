@@ -18,8 +18,6 @@ This project builds a machine learning pipeline to predict energy consumption us
 
 ## 📁 Project Structure
 
-
-.
 ├── data/                   # Raw and processed datasets
 ├── pipelines/              # ZenML pipeline definitions
 ├── steps/                  # Custom ZenML steps (data ingestion, preprocessing, training, evaluation, etc.)
@@ -83,14 +81,26 @@ pip install -r requirements.txt
 
 ```bash
 zenml init
-zenml stack set <your-stack-name>
+zenml integration install mlflow -y
+zenml experiment-tracker  register energy_compsumption_prediction_tracker --flavor=mlflow
+zenml model-deployer register energy_model_deployer
+zenml stack register -a d -o d -d energy_model_deployer -e energy_compsumption_prediction_tracker --set 
 ```
 
 ### 4. Run the Pipeline
 
 ```bash
-python run_pipeline.py  # or your main execution file
+python3 run_pipeline.py  # or your main execution file
 ```
+
+
+### Model Deployment
+
+```bash
+python3 run_deployment.py
+```
+
+for deployment the model using mlflow and zenml and that return mlflow prediction service.
 
 ---
 
@@ -131,5 +141,5 @@ You can send JSON input to the deployed MLflow endpoint using ZenML service:
 
 This project is licensed under the MIT License. See `LICENSE` for details.
 
-```
+
 
