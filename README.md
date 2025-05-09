@@ -9,7 +9,7 @@ Here's a sample `README.md` for your **Energy Consumption Prediction Project usi
 
 ---
 
-```markdown
+
 # 🏠 Energy Consumption Prediction with ZenML
 
 This project builds a machine learning pipeline to predict energy consumption using environmental and operational data from multiple zones. The pipeline is developed using **ZenML**, and incorporates preprocessing, model training, hyperparameter tuning with **Optuna**, model deployment using **MLflow**, and real-time inference.
@@ -18,7 +18,6 @@ This project builds a machine learning pipeline to predict energy consumption us
 
 ## 📁 Project Structure
 
-```
 
 .
 ├── data/                   # Raw and processed datasets
@@ -30,7 +29,7 @@ This project builds a machine learning pipeline to predict energy consumption us
 ├── requirements.txt        # Python dependencies
 ├── README.md               # Project documentation
 
-````
+
 
 ---
 
@@ -111,12 +110,13 @@ You can send JSON input to the deployed MLflow endpoint using ZenML service:
 
 ## 📦 Requirements
 
-* Python 3.8+
+* Python 3.12
 * ZenML
 * Scikit-learn
 * Optuna
 * MLflow
-* Pandas, NumPy
+* Pandas, NumPy,
+
 
 ---
 
