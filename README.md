@@ -5,7 +5,7 @@
 You've been hired as a data scientist for SmartManufacture Inc., a leading industrial automation company. The company has deployed an extensive sensor network throughout one of their client's manufacturing facilities to monitor environmental conditions and energy usage.
 
 The client is concerned about the increasing energy costs associated with their manufacturing equipment. They want to implement a predictive system that can forecast equipment energy consumption based on various environmental factors and sensor readings from different zones of the factory.
-Here's a sample `README.md` for your **Energy Consumption Prediction Project using ZenML**, written in Markdown format:
+
 
 ---
 
@@ -18,14 +18,36 @@ This project builds a machine learning pipeline to predict energy consumption us
 
 ## 📁 Project Structure
 
-├── data/                   # Raw and processed datasets
-├── pipelines/              # ZenML pipeline definitions
-├── steps/                  # Custom ZenML steps (data ingestion, preprocessing, training, evaluation, etc.)
-├── models/                 # Saved models (optional)
-├── notebooks/              # Jupyter notebooks for EDA and testing
-├── .gitignore              # Git ignore file to avoid tracking unnecessary files
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
+energy-consumption-predictor/
+├── data/
+│   ├── raw/                         # Raw input data files
+│   └── processed/                   # Processed/cleaned datasets
+├── pipelines/
+│   ├── training_pipeline.py        # ZenML training pipeline definition
+│   └── inference_pipeline.py 
+├── src/                             # conatin core logic for this project 
+│   ├── data_ingestion.py
+│   ├── data_preprocessing.py
+│   ├──data_splitting.py
+│   ├──outerlier_detection.py
+│   ├──model_building.py
+│   ├──model_evalaution.py
+├── steps/                                  # ZenML inference pipeline definition
+│   ├── data_ingestion_step.py              # Step to load the dataset
+│   ├── data_preprocessor_step.py        # Step to clean and scale the data
+│   ├── model_building_step.py            # Step to train the ML model
+│   ├── model_evaluator_evaluation_step.py          # Step to evaluate model performance
+│   ├── prediction_service_loader.py           # Step to deploy model with MLflow
+│   ├── predictor.py                # Step for making predictions
+│   └── dynamic_importer.py         # Step to import test input data dynamically
+├── models/                         # (optional) Saved trained models
+├── notebooks/
+│   └── eda.ipynb                   # Exploratory data analysis and testing
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── run_pipeline.py
+├── run_deployment.py           # Entry point to run the ZenML pipeline
 
 
 
