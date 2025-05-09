@@ -14,7 +14,7 @@ def ml_training_pipeline():
     processed_data = data_preprocessing_step(df=raw_data)
     processed_data = outlier_detection_step(data=processed_data)
     X_train, X_test, y_train, y_test = data_splitter_step(df=processed_data, target_column="equipment_energy_consumption")
-    model = model_builder_step(model_name = "xgboost",X_train=X_train, y_train=y_train,tune=True)
+    model = model_builder_step(model_name = "xgboost",X_train=X_train, y_train=y_train,tune=False)
     metrics = model_evaluation_step(model=model, X_test=X_test, y_test=y_test)
     return model
 

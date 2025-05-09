@@ -34,7 +34,7 @@ def data_preprocessing_step(df: pd.DataFrame) -> pd.DataFrame:
         processed_df = preprocessor.find_duplicate_rows(processed_df)  # Assuming you implement this function
         processed_df = preprocessor.remove_duplicated(processed_df)    # Assuming you implement this function
         processed_df = preprocessor.fill_missing_values(processed_df)  # Assuming you implement this function
-        preprocessor.save_to_csv(df, "final_processed_data.csv")
+        preprocessor.save_to_csv(df, "data/final_processed_data.csv")
 
         logging.info("Data preprocessing step completed successfully.")
         return processed_df

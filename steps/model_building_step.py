@@ -73,6 +73,7 @@ def model_builder_step(model_name: str, X_train: pd.DataFrame, y_train: pd.Serie
         # Train the model
         pipeline.fit(X_train, y_train)
         logging.info("Model training completed")
+        model_builder.save_model(pipeline, model_name)
     except ValueError as e:
         logging.error(f"An error occurred: {e}")
         raise

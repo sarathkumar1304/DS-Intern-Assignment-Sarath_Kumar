@@ -5,6 +5,9 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+import joblib
+import os
+
 from xgboost import XGBRegressor
 import optuna
 
@@ -149,3 +152,9 @@ class RegressionModelBuilder:
         else:
             logging.error(f"Model '{model_name}' not recognized.")
             raise ValueError(f"Model '{model_name}' not recognized.")
+    def save_model(self, pipeline: Pipeline, model_name: str, output_dir: str = "models") -> None:
+        """Save the trained pipeline to a pickle file."""
+        os.makedirs(output_dir, exist_ok=True)
+        file_path = os.path.join(output_dir, f"{model_name}_pipeline.pkl")
+        joblib.dump(pipeline, file_path)
+        logging.info(f"Model pipeline saved to {file_path}")

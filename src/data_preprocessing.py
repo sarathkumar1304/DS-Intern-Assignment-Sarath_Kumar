@@ -78,7 +78,7 @@ class DataPreprocessing:
         logging.info("Missing value filling completed.")
         return df
     
-    def save_to_csv(self, df: pd.DataFrame, filename: str = "processed_data.csv") -> None:
+    def save_to_csv(self, df: pd.DataFrame, filename: str = "data/processed_data.csv") -> None:
         """
         Saves the processed DataFrame to a CSV file.
         """
