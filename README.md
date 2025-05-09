@@ -17,7 +17,7 @@ This project builds a machine learning pipeline to predict energy consumption us
 ---
 
 ## 📁 Project Structure
-
+```
 energy-consumption-predictor/
 ├── data/
 │   ├── raw/                         # Raw input data files
@@ -50,7 +50,7 @@ energy-consumption-predictor/
 ├── run_deployment.py           # Entry point to run the ZenML pipeline
 
 
-
+```
 ---
 
 ## 🔧 Features
