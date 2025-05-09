@@ -5,112 +5,131 @@
 You've been hired as a data scientist for SmartManufacture Inc., a leading industrial automation company. The company has deployed an extensive sensor network throughout one of their client's manufacturing facilities to monitor environmental conditions and energy usage.
 
 The client is concerned about the increasing energy costs associated with their manufacturing equipment. They want to implement a predictive system that can forecast equipment energy consumption based on various environmental factors and sensor readings from different zones of the factory.
+Here's a sample `README.md` for your **Energy Consumption Prediction Project using ZenML**, written in Markdown format:
 
-## Your Task
+---
 
-Your assignment is to develop a machine learning model that can accurately predict the energy consumption of industrial equipment (`equipment_energy_consumption`) based on the data collected from the factory's sensor network. This will help the facility managers optimize their operations for energy efficiency and cost reduction.
+```markdown
+# 🏠 Energy Consumption Prediction with ZenML
 
-### Specific Goals:
+This project builds a machine learning pipeline to predict energy consumption using environmental and operational data from multiple zones. The pipeline is developed using **ZenML**, and incorporates preprocessing, model training, hyperparameter tuning with **Optuna**, model deployment using **MLflow**, and real-time inference.
 
-1. Analyze the provided sensor data to identify patterns and relationships between environmental factors and equipment energy consumption
-2. Build a robust regression model to predict equipment energy consumption
-3. Evaluate the model's performance using appropriate metrics
-4. Provide actionable insights and recommendations for reducing energy consumption
+---
 
-## Repository Structure
-
-This repository is organized as follows:
+## 📁 Project Structure
 
 ```
+
 .
-├── data/               # Contains the training and test datasets
-│   ├── data.csv        # dataset
-├── docs/               # Documentation files
-│   └── data_description.md  # Detailed description of all features
-└── README.md           # This file
+├── data/                   # Raw and processed datasets
+├── pipelines/              # ZenML pipeline definitions
+├── steps/                  # Custom ZenML steps (data ingestion, preprocessing, training, evaluation, etc.)
+├── models/                 # Saved models (optional)
+├── notebooks/              # Jupyter notebooks for EDA and testing
+├── .gitignore              # Git ignore file to avoid tracking unnecessary files
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
+
+````
+
+---
+
+## 🔧 Features
+
+- **Regression Model Selector**: Choose from Linear Regression, Random Forest, or Decision Tree.
+- **StandardScaler Integration**: Data is scaled using Scikit-learn pipelines.
+- **Hyperparameter Tuning with Optuna**: Tune models when enabled.
+- **MLflow Integration**: Track experiments, visualize metrics, and deploy models.
+- **ZenML Pipelines**: Modular and reproducible pipelines for model training and inference.
+
+---
+
+## 🧪 Input Features
+
+| Feature                   | Description                       |
+|---------------------------|-----------------------------------|
+| equipment_energy_consumption | Energy used by equipment         |
+| lighting_energy            | Energy used for lighting          |
+| zone1_temperature - zone9_temperature | Temperatures of different zones |
+| zone1_humidity - zone9_humidity       | Humidity levels in each zone   |
+| outdoor_temperature        | Temperature outside               |
+| atmospheric_pressure       | Atmospheric pressure              |
+| outdoor_humidity           | Outdoor humidity                  |
+| wind_speed                 | Wind speed                        |
+| visibility_index           | Visibility index                  |
+| dew_point                  | Dew point                         |
+| random_variable1,2         | Experimental variables            |
+| hour, dayofweek, month     | Time-based features               |
+| is_weekend                 | Indicates weekend or not          |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/energy-consumption-predictor.git
+cd energy-consumption-predictor
+````
+
+### 2. Set Up Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
-## Dataset Description
+### 3. Initialize ZenML
 
-The data comes from a manufacturing facility equipped with multiple sensors that collect environmental measurements. Each record contains:
+```bash
+zenml init
+zenml stack set <your-stack-name>
+```
 
-- Timestamp of the measurement
-- Energy consumption readings for equipment and lighting
-- Temperature and humidity readings from 9 different zones in the facility
-- Outdoor weather conditions (temperature, humidity, pressure, etc.)
-- Additional measurements and calculated variables
+### 4. Run the Pipeline
 
-### Notes on Feature Selection and Random Variables
+```bash
+python run_pipeline.py  # or your main execution file
+```
 
-The dataset includes two variables named `random_variable1` and `random_variable2`. Part of your task is to determine, through proper data analysis and feature selection techniques, whether these variables should be included in your model or not. This mimics real-world scenarios where not all available data is necessarily useful for prediction.
+---
 
-Your approach to handling these variables should be clearly documented and justified in your analysis. This will be an important part of evaluating your feature selection methodology.
+## 🔮 Predict with Deployed Model
 
-Note that your final solution will also be evaluated on a separate holdout dataset that we maintain privately, which serves as an additional check on your model's generalization capability.
+You can send JSON input to the deployed MLflow endpoint using ZenML service:
 
-For a detailed description of all features, please refer to the [data description document](docs/data_description.md).
+```json
+{
+  "data": [
+    [0.5, 0.2, 22.1, 40.5, 21.7, 38.2, 20.5, 37.9, 22.5, 42.1, 21.3, 41.2, 22.0, 43.0, 21.9, 44.1, 22.2, 39.4, 21.6, 40.6, 18.0, 1015.2, 55.0, 3.2, 10.0, 12.5, 0.3, 0.6, 14, 3, 6, 0]
+  ]
+}
+```
 
-## Deliverables
+---
 
-Your submission should include:
+## 📦 Requirements
 
-1. **A well-documented Jupyter notebook** containing:
-   - Exploratory data analysis (EDA)
-   - Data preprocessing steps
-   - Feature engineering and selection
-   - Model development and training
-   - Model evaluation and testing
-   - Key findings and insights
+* Python 3.8+
+* ZenML
+* Scikit-learn
+* Optuna
+* MLflow
+* Pandas, NumPy
 
-2. **Python script(s)/notebook(s)** with your final model implementation
+---
 
-3. **A brief report (PDF or Markdown format)** summarizing:
-   - Your approach to the problem
-   - Key insights from the data
-   - Model performance evaluation
-   - Recommendations for reducing equipment energy consumption
+## 🧠 Author
 
-## Evaluation Criteria
+**R. Sarath Kumar**
+*Machine Learning Engineer | MLOps Enthusiast*
 
-Your solution will be evaluated based on:
+---
 
-1. **Code Quality and Structure (25%)**
-   - Clean, well-organized, and properly documented code
-   - Appropriate use of functions and classes
-   - Effective use of Git with meaningful commit messages
-   - Code readability and adherence to Python conventions
+## 📄 License
 
-2. **Data Analysis and Preprocessing (25%)**
-   - Thoroughness of exploratory data analysis
-   - Handling of missing values, outliers, and data transformations
-   - Feature engineering creativity and effectiveness
-   - Proper data splitting methodology
+This project is licensed under the MIT License. See `LICENSE` for details.
 
-3. **Model Development (25%)**
-   - Selection and justification of algorithms
-   - Hyperparameter tuning approach
-   - Implementation of cross-validation
-   - Model interpretability considerations
+```
 
-4. **Results and Insights (25%)**
-   - Model performance metrics (RMSE, MAE, R²) on both the test dataset and our private holdout dataset
-   - Quality of visualizations and explanations
-   - Practical insights and recommendations
-   - Critical evaluation of model limitations
-
-## Submission Instructions
-
-1. Fork this repository to your own GitHub account, naming it `DS-Intern-Assignment-[YourName]` (replace `[YourName]` with your actual name)
-2. Clone your forked repository to your local machine
-3. Make regular, meaningful commits as you develop your solution
-4. Push your changes to your forked repository
-5. Once complete, submit the URL of your forked repository via replying to the mail.
-
-Your commit history will be reviewed as part of the evaluation, so make sure to commit regularly and include meaningful commit messages that reflect your development process.
-
-## Time Commitment
-
-This assignment is designed to be completed in approximately 4-6 hours.
-Deadline is 48 hours/2 days from when you receive the assignment.
-
-Good luck!
